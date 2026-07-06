@@ -1,1 +1,44 @@
+<details>
+<summary><b>MITRE ATT&CK Mapping (Click to Expand)</b></summary>
 
+<br>
+
+| Tactic | Technique | ID | Observed Use |
+|--------|-----------|----|--------------|
+| Initial Access | Drive-by Compromise | T1189 | Access gained via a user visiting a compromised website. |
+| Initial Access | Exploit Public-Facing Application | T1190 | Exploitation of internet-facing vulnerabilities (e.g., Log4Shell). |
+| Initial Access | External Remote Services | T1133 | Abuse of exposed RDP to gain network access. |
+| Initial Access | Phishing | T1566 | Phishing/spear-phishing used to gain initial footholds. |
+| Initial Access | Valid Accounts | T1078 | Use of legitimate compromised credentials for access. |
+| Execution | Command and Scripting Interpreter: Windows Command Shell | T1059.003 | Batch scripts used to run malicious commands. |
+| Execution | Software Deployment Tools | T1072 | Chocolatey package manager abused for deployment. |
+| Execution | System Services: Service Execution | T1569.002 | PsExec used to run payloads across hosts. |
+| Persistence | Boot or Logon Autostart Execution | T1547 | Automatic logon enabled for persistence. |
+| Persistence | Valid Accounts | T1078 | Compromised accounts reused to persist access. |
+| Privilege Escalation | Abuse Elevation Control Mechanism | T1548 | UACMe used to bypass UAC. |
+| Privilege Escalation | Group Policy Modification | T1484.001 | GPO changes used for escalation and lateral movement. |
+| Defense Evasion | Disable or Modify Tools | T1562.001 | Security tools like EDR/AV disabled using utilities. |
+| Defense Evasion | Clear Windows Event Logs | T1070.001 | Event logs cleared to remove traces. |
+| Defense Evasion | File Deletion | T1070.004 | Self-deletion of malware components. |
+| Defense Evasion | Software Packing | T1027.002 | Payloads packed using loaders like Blister. |
+| Credential Access | Brute Force | T1110 | RDP/VPN brute force attacks. |
+| Credential Access | Credentials from Browsers | T1555.003 | Browser credential extraction tools used. |
+| Credential Access | LSASS Memory Dumping | T1003.001 | Mimikatz/ProcDump used to extract credentials. |
+| Discovery | Network Service Discovery | T1046 | Network scanning tools used for enumeration. |
+| Discovery | System Information Discovery | T1082 | System and domain information collected. |
+| Discovery | Language Discovery | T1614.001 | Avoids execution based on locale/language. |
+| Lateral Movement | RDP | T1021.001 | Remote Desktop used for movement. |
+| Lateral Movement | SMB/Admin Shares | T1021.002 | SMB shares used for lateral movement. |
+| Collection | Archive via Utility | T1560.001 | 7-Zip used for data compression. |
+| Command & Control | Web/FTP Protocols | T1071 | C2 over standard web/FTP channels. |
+| Command & Control | Protocol Tunneling | T1572 | SSH tunneling via Plink. |
+| Command & Control | Remote Access Software | T1219 | AnyDesk/TeamViewer used for C2. |
+| Exfiltration | Exfiltration Over Web Services | T1567 | Data exfiltration via StealBit. |
+| Exfiltration | Cloud Storage Exfiltration | T1567.002 | Rclone/MEGA used for data transfer. |
+| Impact | Data Encrypted for Impact | T1486 | Core ransomware encryption behavior. |
+| Impact | Inhibit System Recovery | T1490 | Shadow copies deleted. |
+| Impact | Service Stop | T1489 | Services terminated before encryption. |
+| Impact | Internal Defacement | T1491.001 | LockBit branding applied. |
+| Impact | Data Destruction | T1485 | Logs and recycle bin cleared. |
+
+</details>
