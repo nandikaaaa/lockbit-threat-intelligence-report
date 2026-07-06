@@ -1,1 +1,213 @@
+ LockBit Threat Intelligence Notes
 
+A structured breakdown of LockBit ransomware operations from an SOC/DFIR perspective.
+
+---
+
+ Day 1 — Understanding the Threat
+ Overview
+LockBit is a **Ransomware-as-a-Service (RaaS)** operation that enables affiliates to conduct ransomware attacks using shared tools and infrastructure. It is one of the most active global ransomware families.
+
+Its core strategy is **double extortion**:
+- Encrypt victim data
+- Exfiltrate sensitive data
+- Threaten public leak if ransom is not paid
+
+
+
+ Attack Model
+- Ransomware-as-a-Service (RaaS)
+- Affiliate-driven ecosystem
+- Highly automated and scalable
+- Global targeting scope
+
+---
+
+ Target Sectors
+- Government & public sector
+- Healthcare
+- Financial services
+- Manufacturing
+- Energy & critical infrastructure
+- Education
+- Transportation
+- Any internet-exposed organization
+
+---
+
+ Initial Access Techniques
+- Phishing / spear-phishing (T1566)
+- Valid stolen credentials (T1078)
+- Exploited public-facing applications (T1190)
+- Exposed RDP services (T1133)
+- Drive-by compromise (T1189)
+
+---
+
+Attack Lifecycle (High-Level Flow)
+Initial Access → Execution → Privilege Escalation → Lateral Movement → Credential Access → Exfiltration → Encryption → Impact
+
+---
+
+Common Tools Observed
+- Cobalt Strike (post-exploitation)
+- PsExec (remote execution)
+- PowerShell & batch scripts
+- Mimikatz / ProcDump (credential dumping)
+- 7-Zip (data staging)
+- StealBit (data exfiltration)
+- Rclone / MEGA (cloud exfiltration)
+- AnyDesk / TeamViewer (remote access)
+
+---
+Technical Behavior
+- AES + ECC encryption
+- Multithreaded encryption (fast execution)
+- Windows, Linux, and ESXi support
+- Shadow copy deletion
+- Service termination before encryption
+- High-speed ransomware deployment
+
+---
+
+ Evolution Timeline
+- **2019:** Initial LockBit release
+- **2021:** LockBit 2.0 introduces StealBit + automation
+- **2022:** LockBit 3.0 (Black) major upgrade + bug bounty model
+- Expansion into multiple platforms and affiliates
+
+---
+
+ Persistence Methods
+- Scheduled tasks
+- Registry modifications
+- Valid account reuse
+- Automatic logon configuration
+
+---
+
+ Privilege Escalation
+- UAC bypass techniques (UACMe)
+- Credential reuse
+- Group Policy manipulation
+- Exploitation of misconfigurations
+
+---
+
+ Defense Evasion
+- Disabling EDR/AV tools
+- Clearing Windows event logs
+- PowerShell execution bypass
+- Software packing / obfuscation
+- Self-deletion after execution
+
+---
+
+ Credential Access
+- LSASS memory dumping (Mimikatz)
+- Browser credential extraction
+- Brute force attacks (RDP/VPN)
+- Password recovery utilities
+
+---
+
+ Discovery
+- Network scanning tools (IP/Port scanners)
+- System and domain enumeration
+- Share and drive discovery
+- Language-based execution filtering
+
+---
+
+ Lateral Movement
+- RDP abuse
+- SMB / Admin shares
+- PsExec execution
+- Cobalt Strike movement
+- Remote access tools (AnyDesk, TeamViewer)
+
+---
+
+ Exfiltration
+- StealBit tool
+- Rclone / MEGA cloud storage
+- File sharing platforms
+- 7-Zip compression before transfer
+
+---
+
+ Impact
+- AES + ECC encryption of files
+- Shadow copy deletion
+- Service termination
+- System defacement
+- Data destruction
+
+---
+
+ SOC Detection Focus (Important)
+Security teams should monitor:
+- Suspicious PowerShell execution
+- LSASS access attempts
+- Rapid file renaming/encryption
+- New scheduled tasks creation
+- Unusual RDP/SMB activity
+- Large outbound data transfers
+- Disabled security tools (EDR/AV)
+
+---
+
+ Day 2 — MITRE ATT&CK Mapping & Defensive Analysis
+
+ MITRE ATT&CK Summary
+LockBit operations map across multiple ATT&CK tactics:
+
+- Initial Access
+- Execution
+- Persistence
+- Privilege Escalation
+- Defense Evasion
+- Credential Access
+- Discovery
+- Lateral Movement
+- Collection
+- Exfiltration
+- Impact
+
+---
+
+ Key Defensive Insight
+LockBit attacks are successful due to:
+- Rapid execution (low dwell time)
+- Use of legitimate tools (Living-off-the-Land)
+- Credential abuse instead of malware-heavy tactics
+- Strong lateral movement capability
+- Double extortion pressure model
+
+---
+
+ Defensive Strategy Mapping
+### Prevention
+- MFA enforcement
+- Patch management (critical CVEs)
+- Disable exposed RDP
+- Email filtering
+
+ Detection
+- PowerShell monitoring
+- EDR behavioral alerts
+- Credential dumping detection
+- Lateral movement detection
+
+Response
+- Network segmentation isolation
+- Kill compromised sessions
+- Block C2 domains
+- Restore from clean backups
+
+---
+
+ Final Analyst Takeaway
+LockBit is not just malware — it is a **business model-driven cybercrime ecosystem** that combines automation, affiliates, and extortion tactics to maximize financial impact.
+
+---
