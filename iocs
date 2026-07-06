@@ -1,1 +1,120 @@
+{
+  "threat_family": "LockBit Ransomware",
+  "version": "July 2026",
+  "tlp": "CLEAR",
+
+  "network_indicators": {
+    "malicious_domain": [
+      "sikescomposites[.]com"
+    ],
+    "suspicious_services": [
+      "MEGA",
+      "Rclone",
+      "FreeFileSync",
+      "FileZilla",
+      "ThunderShell",
+      "Ligolo",
+      "Plink"
+    ],
+    "remote_access_tools": [
+      "AnyDesk",
+      "TeamViewer",
+      "ScreenConnect",
+      "Atera RMM",
+      "Splashtop"
+    ]
+  },
+
+  "host_indicators": {
+    "credential_dumping": [
+      "Mimikatz",
+      "ProcDump (LSASS)"
+    ],
+    "discovery_tools": [
+      "SoftPerfect Network Scanner",
+      "Advanced IP Scanner",
+      "Advanced Port Scanner",
+      "AdFind"
+    ],
+    "execution_tools": [
+      "PsExec",
+      "PowerShell",
+      "Windows Command Shell",
+      "Chocolatey"
+    ],
+    "archive_tools": [
+      "7-Zip"
+    ]
+  },
+
+  "defense_evasion": {
+    "security_disabling_tools": [
+      "Backstab",
+      "Defender Control",
+      "GMER",
+      "PCHunter",
+      "PowerTool",
+      "Process Hacker",
+      "TDSSKiller"
+    ],
+    "other_behaviors": [
+      "Windows Event Log clearing",
+      "Self-deleting executable",
+      "Blister Loader packing",
+      "PowerShell execution policy bypass"
+    ]
+  },
+
+  "behavioral_indicators": [
+    "Mass file encryption",
+    "Volume shadow copy deletion",
+    "Windows Event ID 1102",
+    "Large outbound data transfers",
+    "Unexpected RDP sessions",
+    "SMB lateral movement",
+    "Abnormal PowerShell execution",
+    "Creation of ransom notes",
+    "Desktop wallpaper modification",
+    "Termination of security services"
+  ],
+
+  "exploited_cves": [
+    "CVE-2023-0669",
+    "CVE-2023-27350",
+    "CVE-2021-44228",
+    "CVE-2021-22986",
+    "CVE-2020-1472",
+    "CVE-2019-0708",
+    "CVE-2018-13379"
+  ]
+}
+
+README
+# LockBit Indicators of Compromise (IOCs)
+
+This directory contains a structured collection of Indicators of Compromise (IOCs) identified during the threat intelligence analysis of LockBit ransomware.
+
+IOC Categories
+
+Network Indicators
+- Known malicious domains
+- Cloud storage and exfiltration services
+- Remote access software frequently abused by affiliates
+
+Host Indicators
+- Credential dumping tools
+- Discovery and enumeration utilities
+- Living-off-the-land binaries (LOLBins)
+
+Defense Evasion
+- Antivirus and EDR disabling utilities
+- Event log clearing
+- Software packing and obfuscation
+
+Behavioral Indicators
+- Volume shadow copy deletion
+- Mass file encryption
+- Large outbound data transfers
+- RDP and SMB lateral movement
+- Ransom note creation
 
